@@ -66,6 +66,7 @@ This performs a local copy of the skill files. You will need to re-run the comma
 ```text
 x-algorithm-skills/
 ├── AGENTS.md
+├── CLAUDE.md
 ├── .claude-plugin/
 │   └── marketplace.json
 ├── plugins/
