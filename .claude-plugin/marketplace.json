@@ -1,0 +1,33 @@
+{
+  "name": "x-algorithm-skills",
+  "owner": {
+    "name": "Elemont",
+    "email": "https://x.com/elemont"
+  },
+  "metadata": {
+    "description": "Professional toolset for interacting with and building on the X algorithm.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "x-post-optimizer",
+      "source": "./plugins/x-post-optimizer",
+      "description": "Growth and visibility optimization engine."
+    },
+    {
+      "name": "x-algo-blueprint",
+      "source": "./plugins/x-algo-blueprint",
+      "description": "ML Architecture and Pipeline mapping."
+    },
+    {
+      "name": "x-dev-pro",
+      "source": "./plugins/x-dev-pro",
+      "description": "Rust/Scala engineering assistant."
+    },
+    {
+      "name": "x-data-signals",
+      "source": "./plugins/x-data-signals",
+      "description": "SimClusters and Graph analytics expert."
+    }
+  ]
+}
