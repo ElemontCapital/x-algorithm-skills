@@ -34,6 +34,8 @@ For specific tactical data, refer to:
 
 ## Example Trigger Prompts
 
+* "/post-check: Optimize this draft: [Insert Post Text]"
+* "/post-check: Why is my reach low on this specific post?"
 * "Review this draft: should I include the link in the main post or the first reply?"
 * "Why is my second post today performing 50% worse than the first?"
 * "Explain why video content has a different reach profile than text-only posts."
