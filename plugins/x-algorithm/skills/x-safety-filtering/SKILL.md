@@ -1,7 +1,7 @@
 ---
 name: x-safety-filtering
 description: Use this skill when analyzing why content is not appearing, checking for "shadowban" conditions, or understanding the safety compliance layer. This skill covers the `VisibilityLib` logic that runs *after* candidate sourcing but *before* final ranking to ensure platform health.
-version: 1.1.0
+version: 1.0.0
 license: MIT
 ---
 
