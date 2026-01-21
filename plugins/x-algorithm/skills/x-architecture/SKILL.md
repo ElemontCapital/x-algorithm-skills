@@ -1,13 +1,13 @@
 ---
 name: x-architecture
-description: Master reference for the X (Twitter) recommendation engine architecture, specifically the HomeMixer orchestration layer, ProductMixer functional components, and the Scala-to-Rust candidate pipeline bridge.
+description: Use this skill when reasoning about the distributed system design, service orchestration, or request lifecycle of the X recommendation engine. It is essential for tasks involving the "For You" timeline construction, HomeMixer logic, or ProductMixer component definitions.
 version: 1.1.0
 license: MIT
 ---
 
 # X Algorithm Architecture
 
-Use this skill when reasoning about the distributed system design, service orchestration, or request lifecycle of the X recommendation engine. It is essential for tasks involving the "For You" timeline construction, `HomeMixer` logic, or `ProductMixer` component definitions.
+Master reference for the X (Twitter) recommendation engine architecture, specifically the HomeMixer orchestration layer, ProductMixer functional components, and the Scala-to-Rust candidate pipeline bridge.
 
 ## Context
 
