@@ -172,6 +172,12 @@ x-algorithm-skills/
 │           │   ├── SKILL.md
 │           │   └── references/
 │           └── x-safety-filtering/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           └── x-retrieval-systems
+│           │   ├── SKILL.md
+│           │   └── references/
+│           └── x-experimental-ops
 │               ├── SKILL.md
 │               └── references/
 ├── README.md
