@@ -28,3 +28,7 @@ The filtering stage is the "Gatekeeper" of the timeline. Even if a tweet has a h
     2.  **Post-Scoring:** Soft filters (Labels) apply safety checks (e.g., author diversity) after the Heavy Ranker has assigned scores.
 * **Toxicity Thresholds:** If a user enters a "Reply Guy" mode with consistently high `pToxicity` scores, their account enters a state that limits the reach of all their future replies.
 * **Linear Decay:** Negative reputation signals follow a linear decay model; an account can "heal" its reputation over time by stopping negative behavior.
+
+* ## Example Trigger Prompts
+* "/safety-check: Am I shadowbanned or under a SearchBlacklist?"
+* "/safety-check: Explain the toxicity decay for this account."
