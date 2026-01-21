@@ -34,13 +34,16 @@ This performs a local copy of the skill files. You will need to re-run the comma
 
 ## ⌨️ Commands
 
-| Command | Purpose | Usage |
-| :--- | :--- | :--- |
-| **`/post-check`** | Optimizes reach | "Run `/post-check` on this draft." |
-| **`/trace-feed`** | Explains architecture | "Execute `/trace-feed` for the For You timeline." |
-| **`/audit-ml`** | Reviews ranking logic | "`/audit-ml` show the current Like vs. RT weights." |
-| **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." |
-| **`/gen-thrift`** | Generates boilerplate | "`/gen-thrift` for a new engagement signal." |
+| Command | Purpose | Example Usage | Skill |
+| :--- | :--- | :--- | :--- |
+| **`/post-check`** | Optimize reach | "Run `/post-check` on this draft." | **x-post-optimizer** |
+| **`/trace-feed`** | Explain architecture | "Execute `/trace-feed` for the For You timeline." | **x-architecture** |
+| **`/audit-ml`** | Review ranking logic | "`/audit-ml` show the current Like vs. RT weights." | **x-ranking-engine** |
+| **`/gen-thrift`** | Generate boilerplate | "`/gen-thrift` for a new engagement signal." | **x-dev-engineering** |
+| **`/explain-graph`** | Retrieve and rank | "`/explain-graph`: Calculate the TweepCred for this account." | **x-data-signals** |
+| **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." | **x-safety-filtering** |
+| **`/find-candidates:`** | Candidate search | "`/find-candidates`: How does the system retrieve candidates?" | **x-retrieval-systems** |
+| **`/run-experiment`** | Algorithm tuning | "`/run-experiment`: Explain the salt-based hashing used in DuckDuckGoose." | **x-experimental-ops** |
 
 ---
 
