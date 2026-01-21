@@ -46,6 +46,9 @@ For detailed logic, see:
 
 ## Example Trigger Prompts
 
+* "/explain-graph: Calculate the TweepCred for this account."
+* "/explain-graph: What are the SimClusters for @user?"
+* "/explain-graph: Show RealGraph interaction probability."
 * "How does SimClusters v2 calculate the 'InterestedIn' score for a user?"
 * "What is the difference between RealGraph weights and simple Follow relationships?"
 * "How does TweepCred affect the `min_reputation` threshold in the Heavy Ranker?"
