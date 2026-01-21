@@ -32,7 +32,19 @@ This performs a local copy of the skill files. You will need to re-run the comma
 
 ---
 
-## ⚡ The Skill Suite
+## ⌨️ Commands
+
+| Command | Purpose | Usage |
+| :--- | :--- | :--- |
+| **`/post-check`** | Optimizes reach | "Run `/post-check` on this draft." |
+| **`/trace-feed`** | Explains architecture | "Execute `/trace-feed` for the For You timeline." |
+| **`/audit-ml`** | Reviews ranking logic | "`/audit-ml` show the current Like vs. RT weights." |
+| **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." |
+| **`/gen-thrift`** | Generates boilerplate | "`/gen-thrift` for a new engagement signal." |
+
+---
+
+## ⚡ Skills
 
 | Skill  | Best For | Description |
 |--------|--------|-------------|
@@ -47,7 +59,7 @@ This performs a local copy of the skill files. You will need to re-run the comma
 
 ---
 
-## 📁 Project Structure
+## 📁 Structure
 ```text
 x-algorithm-skills/
 ├── AGENTS.md
@@ -88,7 +100,7 @@ x-algorithm-skills/
 ```
 ---
 
-## 📜 License & Attribution
+## 📜 License
 
 This project builds on concepts and structures described in the open-source **xAI X Algorithm** repository:  
 https://github.com/xai-org/x-algorithm  
