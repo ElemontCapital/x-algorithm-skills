@@ -1,13 +1,15 @@
 {
   "name": "x-algorithm",
   "version": "1.0.0",
-  "description": "Comprehensive X Algorithm knowledge base.",
+  "description": "Comprehensive X Algorithm knowledge base, from Rust engineering to viral content strategy.",
   "skills": [
-    "./skills/x-post-optimizer/",
-    "./skills/x-architecture/",
-    "./skills/x-ranking-engine/",
-    "./skills/x-dev-engineering/",
-    "./skills/x-data-signals/",
-    "./skills/x-safety-filtering/"
+    "./skills/x-post-optimizer",
+    "./skills/x-architecture",
+    "./skills/x-ranking-engine",
+    "./skills/x-dev-engineering",
+    "./skills/x-data-signals",
+    "./skills/x-safety-filtering",
+    "./skills/x-retrieval-systems",
+    "./skills/x-experimental-ops"
   ]
 }
