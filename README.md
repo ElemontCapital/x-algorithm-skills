@@ -19,13 +19,16 @@ Install the skills:
 ```bash
 /plugin install x-algorithm
 ```
-### Any Agent
-For other agents, you can extract and add the skills manually:
+### Any Other Agent (Cursor, Windsurf, Roo Code, etc.)
+You can use the universal installer to pull specific skills into your project context:
 ```bash
 bunx add-skill ElemontCapital/x-algorithm-skills
 ```
-This will install the skills individually, so you will need to manually upgrade them when updates are available.
-See **AGENTS.md** for manual installation instructions.
+To install a specific skill only (e.g., the optimizer):
+```bash
+bunx add-skill ElemontCapital/x-algorithm-skills x-post-optimizer
+```
+This performs a local copy of the skill files. You will need to re-run the command to receive updates. See [**AGENTS.md**](AGENTS.md) for detailed setup.
 
 ---
 
