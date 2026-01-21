@@ -1,7 +1,0 @@
-{
-  "name": "x-algo-blueprint",
-  "version": "1.0.0",
-  "description": "Maps the journey from candidate generation to scoring.",
-  "author": { "name": "x-algorithm-skills" },
-  "skills": ["./skills/x-algo-blueprint/"]
-}
