@@ -36,14 +36,14 @@ You can "summon" these personas by providing the corresponding SKILL.md files to
 
 | Skill | Role | Core Capability |
 |--------|--------|-------------|
-| x-post-optimizer | Content Strategist | Optimizes reach via HeavyRanker weight alignment. |
-| x-architecture | System Architect | Maps HomeMixer and candidate generation flows. |
-| x-ranking-engine | ML Engineer | Audits MaskNet scoring and MTL probability heads. |
-| x-dev-engineering | Software Engineer | Assists with Rust/Scala interop and Thrift definitions. |
-| x-data-signals | Data Scientist | Explains SimClusters, TweepCred, and RealGraph. |
-| x-safety-filtering | Safety Analyst | Decodes VisibilityLib labels and shadowban logic. |
-| x-retrieval-systems | Search Engineer | Manages Earlybird indices and ANN vector search. |
-| x-experimental-ops | Product Manager | Tracks DuckDuckGoose tests and "North Star" metrics. |
+| **x-post-optimizer** | Content Strategist | Optimizes reach via HeavyRanker weight alignment. |
+| **x-architecture** | System Architect | Maps HomeMixer and candidate generation flows. |
+| **x-ranking-engine** | ML Engineer | Audits MaskNet scoring and MTL probability heads. |
+| **x-dev-engineering** | Software Engineer | Assists with Rust/Scala interop and Thrift definitions. |
+| **x-data-signals** | Data Scientist | Explains SimClusters, TweepCred, and RealGraph. |
+| **x-safety-filtering** | Safety Analyst | Decodes VisibilityLib labels and shadowban logic. |
+| **x-retrieval-systems** | Search Engineer | Manages Earlybird indices and ANN vector search. |
+| **x-experimental-ops** | Product Manager | Tracks DuckDuckGoose tests and "North Star" metrics. |
 
 ---
 
