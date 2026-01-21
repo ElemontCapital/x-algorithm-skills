@@ -42,7 +42,7 @@ This performs a local copy of the skill files. You will need to re-run the comma
 | **`/gen-thrift`** | Generate boilerplate | "`/gen-thrift` for a new engagement signal." | **x-dev-engineering** |
 | **`/explain-graph`** | Retrieve and rank | "`/explain-graph`: Calculate the TweepCred for this account." | **x-data-signals** |
 | **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." | **x-safety-filtering** |
-| **`/find-candidates:`** | Candidate search | "`/find-candidates`: How does the system retrieve candidates?" | **x-retrieval-systems** |
+| **`/find-candidates`** | Candidate search | "`/find-candidates`: How does the system retrieve candidates?" | **x-retrieval-systems** |
 | **`/run-experiment`** | Algorithm tuning | "`/run-experiment`: Explain the salt-based hashing used in DuckDuckGoose." | **x-experimental-ops** |
 
 ---
