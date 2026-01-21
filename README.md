@@ -31,117 +31,14 @@ See **AGENTS.md** for manual installation instructions.
 
 | Skill  | Best For | Description |
 |--------|--------|-------------|
-| **x-post-optimizer** | Content Creators | Maximizes reach by optimizing for **HeavyRanker** weights. |
-| **x-architecture** | Architects | Maps the **HomeMixer** pipeline and candidate generation. |
-| **x-ranking-engine** | ML Engineers | Deep dive into **HeavyRanker (MaskNet)** and scoring logic. |
-| **x-dev-engineering** | Software Engineers | Coding assistant for Rust/Scala and Thrift definitions. |
-| **x-data-signals** | Data Scientists | Logic for **SimClusters**, **TweepCred**, and Graph Analytics. |
-| **x-safety-filtering** | Trust & Safety | Managing **VisibilityLib**, safety labels, and shadowbans. |
-
----
-
-## 📖 Skill Definitions & Capabilities
-
-### 1) `x-post-optimizer`
-
-**Context**  
-Contains the weighting parameters from `ScoringService` and filtering logic from `VisibilityLib`.
-
-**Typical Triggers**  
-- Draft a post…  
-- Why is my reach low?  
-- Check for shadowban.
-
-**What it does**  
-- Rewrites or scores posts against known ranking features.  
-- Flags likely visibility or safety issues before publishing.  
-- Suggests structural changes (hook, media, timing, engagement bait).
-
----
-
-### 2) `x-architecture`
-
-**Context**  
-Orchestration logic within the `HomeMixer` and `ProductMixer` frameworks.
-
-**Typical Triggers**  
-- How does the feed work?  
-- Explain candidate generation.  
-- What is Phoenix?
-
-**What it does**  
-- Explains the end-to-end feed pipeline.  
-- Breaks down each stage: sourcing, scoring, filtering, mixing.  
-- Helps reason about where ranking changes have the biggest impact.
-
----
-
-### 3) `x-ranking-engine`
-
-**Context**  
-ML model implementation in the `heavy-ranker` module.
-
-**Typical Triggers**  
-- How is scoring calculated?
-- Explain the Transformer model.  
-- What is MaskNet?
-
-**What it does**  
-- Provides technical details on the neural network architecture.
-- Explains candidate isolation.
-- Breaks down multi-task probability scoring.
-
----
-
-### 4) `x-dev-engineering`
-
-**Context**  
-Contains patterns for Rust/Scala interop, Thrift schemas, and the `product-mixer` framework.
-
-**Typical Triggers**  
-- Refactor this mixer pipeline.
-- Create a new Candidate Source.  
-- "Generate a Thrift schema.
-
-**What it does**  
-- Assists with navigating the `ProductMixer` architecture.  
-- Generates and reviews Thrift and service boundaries.  
-- Helps debug cross-language pipeline issues.
-- Assists in writing high-performance async Rust.
-
----
-
-### 5) `x-data-signals`
-
-**Context**  
-Contains logic for `SimClusters` (Communities), `RealGraph` (User Interactions), and `TweepCred` (Reputation).
-
-**Typical Triggers**  
-- Explain user clustering.  
-- How is reputation calculated?
-- What is TweepCred? 
-- Analyze graph embeddings.
-
-**What it does**  
-- Explains how users and content are embedded into clusters.  
-- Breaks down interaction graphs and authority signals.  
-- Explains how `PageRank-style reputation scores influence content priority.
-
----
-
-### 6) `x-safety-filtering`
-
-**Context**  
-Compliance and health logic in `visibility-lib`.
-
-**Typical Triggers**  
-- Am I shadowbanned?
-- Check for toxicity filters.
-- What are safety labels?
-
-**What it does**  
-- Identifies triggers for `DoNotAmplify` or `SearchBlacklist` labels
-- Explains the "Linear Decay" applied to reported content.
+| **x-post-optimizer** | Content Creators | Use when drafting posts or threads to ensure maximum distribution by hitting high-weight signals like Author Replies and Dwell Time |
+| **x-architecture** | Architects | Use when mapping request flows through HomeMixer or designing the orchestration and lifecycle of new candidate sources. |
+| **x-ranking-engine** | ML Engineers | Use when tuning MaskNet models, adding new engagement heads, or auditing how probability calibration affects the final weighted score. |
+| **x-dev-engineering** | Software Engineers | Use when writing production code, implementing modular Rust traits, or updating Thrift IDL files for cross-service communication. |
+| **x-data-signals** | Data Scientists | Use when exploring SimCluster community mappings, calculating account authority (TweepCred), or analyzing RealGraph relationship weights. |
+| **x-safety-filtering** | Policy & Safety | Use when investigating visibility drops, applying "Do Not Amplify" labels, or configuring the VisibilityLib rule engine for legal compliance. |
+| **x-retrieval-systems** | Search Engineers | Use when optimizing top-of-funnel sourcing, managing Earlybird search indices, or tuning ANN vector searches to improve candidate diversity. |
+| **x-experimental-ops** | Product Managers | Use when launching A/B tests via DuckDuckGoose, defining "North Star" metrics, or managing feature flags for specific user cohorts. |
 
 ---
 
