@@ -19,3 +19,10 @@ Retrieval at X is split between **In-Network** (content from people you follow) 
 * **Decodes In-Network Sourcing:** Explains how Earlybird shards the index into Realtime, Protected, and Archive clusters.
 * **Explains Discovery Logic:** Details how Two-Tower models enable "semantic" search for content you don't follow.
 * **Analyzes Latency:** Breaks down the single-writer/multi-reader concurrency model that allows for sub-second global retrieval.
+
+## Example Trigger Prompts
+* "/find-candidates: Explain how Earlybird shards the real-time search index."
+* "/find-candidates: How does the system retrieve 1,500 candidates from 500 million potential tweets?"
+* What is the role of HNSW in embedding-based discovery?"
+* Explain the difference between 'In-Network' retrieval (Thunder) and 'Out-of-Network' retrieval (Phoenix)."
+* Trace the flow of a 'Discovery' request from the User Embedding to the Candidate Source."
