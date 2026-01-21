@@ -8,7 +8,7 @@ If you are not using the Claude Code CLI, you can point your agent to the local 
 ### For Cursor / Windsurf
 1.  Clone this repository:
     ```bash
-    git clone [https://github.com/ElemontCapital/x-algorithm-skills.git](https://github.com/ElemontCapital/x-algorithm-skills.git)
+    git clone https://github.com/ElemontCapital/x-algorithm-skills.git
     ```
 2.  In your Agent's settings (or `.cursor/rules`), add a reference to the specific skill folder you need.
     * **Strategy:** `./plugins/x-algorithm/skills/x-post-optimizer/SKILL.md`
