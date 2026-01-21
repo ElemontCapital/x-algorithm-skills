@@ -36,6 +36,7 @@ For deep technical specifications, refer to:
 * **Navi Serving:** Models are served via **Navi**. When adding a new feature to the model, it must be hydrated in the `HomeMixer` and passed through the Thrift interface to the ranker.
 * **Positive vs. Negative Signals:** Ensure you account for negative weights. Signals like "Show less often" or "Block/Mute" have massive negative multipliers that can instantly tank a candidate's score.
 * **Recency Bias:** The algorithm applies a time-decay function. A high-scoring old tweet will eventually be outranked by a lower-scoring fresh tweet to maintain timeline "newness."
+* **Action-Specific Weights**: Videos eligible for vqv boosts in P(video_view); no equivalent for other media.
 
 ## Example Trigger Prompts
 
