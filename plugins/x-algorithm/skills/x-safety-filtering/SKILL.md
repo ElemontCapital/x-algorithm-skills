@@ -33,6 +33,7 @@ For specific definitions of labels and logic, see:
     2.  **Post-Scoring:** To apply final safety checks (like author diversity or adjacency rules) before delivery.
 * **Toxicity Thresholds:** The system calculates a toxicity score. If a user enters a "Reply Guy" mode with consistently high toxicity, their account enters a `p_toxicity` state that limits the reach of *all* their future replies.
 * **Linear Decay:** Negative reputation signals (reports/blocks) don't last forever. They follow a linear decay model, meaning an account can "heal" its reputation over time by stopping the negative behavior.
+* **Frequency Filter**: Halves scores for posts <1 hour apart, similar to muted/blocked penalties.
 
 ## Example Trigger Prompts
 
