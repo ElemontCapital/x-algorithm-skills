@@ -1,48 +1,40 @@
 ---
 name: x-dev-engineering
-description: Technical expertise for developing and extending the X recommendation engine, focusing on Rust traits, Scala ProductMixer configurations, and Thrift-based RPC communication.
+description: Use this skill when implementing new features or debugging the core "For You" pipeline. The system has shifted from legacy heuristics toward a unified **Rust-based** pipeline powered by the **Phoenix** transformer (Grok).
 version: 1.0.0
 license: MIT
 ---
 
 # X Development Engineering
 
-Use this skill when you are writing code, debugging service interactions, or extending the recommendation framework. It provides the low-level implementation details for the **ProductMixer** (Scala) and **Candidate Pipeline** (Rust) frameworks used to build X's feeds.
+Technical expertise for developing and extending the X recommendation engine, focusing on the Grok-powered Phoenix model, Rust candidate pipelines, and the removal of hand-engineered features.
 
 ## Context
 
-The engineering philosophy behind X's algorithm has shifted toward a high-performance **Rust-first** approach for core logic, while maintaining **Scala** for high-level orchestration. Services like `HomeMixer` act as the glue, using **Thrift** schemas to communicate across service boundaries. Development involves implementing modular traits (Filters, Scorers, Hydrators) that fit into a strictly ordered pipeline execution model.
+The modern X algorithm prioritizes a "No Hand-Engineered Features" philosophy. Relevance is learned directly from user engagement sequences using a transformer architecture.
 
-
-
-For implementation specs and best practices, see:
+For technical deep-dives, see:
 - [The Rust Candidate Pipeline](./references/rust-pipeline.md)
-- [Scala ProductMixer Framework](./references/scala-framework.md)
-- [Communication & Thrift Guidelines](./references/thrift-guidelines.md)
+- [Phoenix (Grok) Model Scoring](./references/phoenix-scoring.md)
+- [Visibility & Safety Engineering](./references/visibility-safety.md)
 
 ## What it does
 
-* **Scaffolds Pipeline Components:** Provides boilerplate and logic for implementing new `Filters`, `Scorers`, or `CandidateSources` in Rust.
-* **Debugs Cross-Language Logic:** Assists in tracing data as it moves from Scala orchestration to Rust execution layers.
-* **Implements Thrift Interfaces:** Generates and validates service-to-service communication contracts.
-* **Optimizes Async Execution:** Applies best practices for `tokio` and `async-trait` to ensure non-blocking performance in the pipeline.
+* **Implements Grok-Native Components:** Guidance on integrating with the Phoenix transformer for multi-action prediction (Like, Repost, Reply, etc.).
+* **Architects Candidate Sources:** Logic for the two primary retrieval engines: **Thunder** (In-Network) and **Phoenix Retrieval** (Out-of-Network).
+* **Enforces Pipeline Order:** Ensures components follow the strict sequence: Query Hydration -> Sourcing -> Hydration -> Pre-Scoring Filters -> Scoring -> Selection.
+* **Optimizes for Parallelism:** Leverages Rust's async/await to execute independent hydration and sourcing tasks concurrently.
 
 ## Guidelines
 
-* **Trait-Based Development:** Everything in the Rust core is a trait.
-    * `Filter<Q, C>`: Receives a vector of candidates and returns a filtered vector.
-    * `Scorer<Q, C>`: Must preserve the count and order of candidates, assigning scores in-place.
-    * `Hydrator<Q, C>`: Performs I/O to enrich candidates with metadata.
-* **Async/Await Patterns:** Use `#[async_trait]` for all pipeline components. Ensure that `Hydrators` and `Sources` execute in parallel where possible using `futures::join_all`.
-* **Memory Management:** Leverage `Arc<T>` for shared read-only state across the pipeline (e.g., config parameters or pre-loaded ML model weights).
-* **Error Handling:** Components should return `Result<T, String>`. Avoid panics within the pipeline to ensure that a failure in one candidate source doesn't crash the entire user request.
-* **Scala-Rust Interop:** Understand that Scala (`ProductMixer`) handles the "Which pipeline do I run?" logic, while Rust (`HomeMixer`) handles the "How do I run this pipeline?" logic.
-* **Observability:** Use the `#[xai_stats_macro]` to wrap key functions. This ensures that latency and success rates for your new components are automatically tracked in internal dashboards.
+* **Candidate Isolation:** During scoring, ensure candidates cannot "attend" to each other in the transformer. This maintains score consistency and enables batching.
+* **No Heuristics:** Avoid adding manual "if/then" rules for relevance; the Phoenix model should handle weightings through learned engagement probabilities.
+* **Hydration Efficiency:** Fetch only necessary metadata (text, media, author status) during the Candidate Hydration stage after initial sourcing to minimize I/O.
+* **Safety First:** All content must pass through `VisibilityLib` (Rust) for legal compliance and safety filtering before reaching the user.
 
 ## Example Trigger Prompts
 
-* "How do I implement a new Filter in the Rust candidate-pipeline?"
-* "Show me the Thrift definition for adding a new engagement signal to the Scorer."
-* "Explain the execution order of Hydrators vs. Scorers in HomeMixer."
-* "Write a Scala ProductMixer config for a new 'Trending' candidate source."
-* "Help me debug an async deadlock in the Thunder service logic."
+* "How do I add a new engagement signal to the Phoenix multi-action prediction?"
+* "Show the Rust implementation for a Thunder candidate source."
+* "Explain the 'No Hand-Engineered Features' design in the latest ranking update."
+* "How is candidate isolation enforced in the transformer's attention mask?"
