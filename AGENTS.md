@@ -47,6 +47,21 @@ You can "summon" these personas by providing the corresponding SKILL.md files to
 
 ---
 
+## ⌨️ Command Reference
+
+| Command | Purpose | Example Usage | Skill |
+| :--- | :--- | :--- | :--- |
+| **`/post-check`** | Optimize reach | "Run `/post-check` on this draft." | **x-post-optimizer** |
+| **`/trace-feed`** | Explain architecture | "Execute `/trace-feed` for the For You timeline." | **x-architecture** |
+| **`/audit-ml`** | Review ranking logic | "`/audit-ml` show the current Like vs. RT weights." | **x-ranking-engine** |
+| **`/gen-thrift`** | Generate boilerplate | "`/gen-thrift` for a new engagement signal." | **x-dev-engineering** |
+| **`/explain-graph`** | Retrieve and rank | "`/explain-graph`: Calculate the TweepCred for this account." | **x-data-signals** |
+| **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." | **x-safety-filtering** |
+| **`/find-candidates:`** | Candidate search | "`/find-candidates`: How does the system retrieve candidates?" | **x-retrieval-systems** |
+| **`/run-experiment`** | Algorithm tuning | "`/run-experiment`: Explain the salt-based hashing used in DuckDuckGoose." | **x-experimental-ops** |
+
+---
+
 ## 🛠 Third-Party Integration
 To ensure third-party agents (Cursor, Copilot, Roo Code) utilize these skills effectively, follow the instructions below.
 ### 1. Cursor & Windsurf
