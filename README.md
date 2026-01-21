@@ -8,31 +8,36 @@ A suite of high-performance agent skills derived from a thorough analysis of the
 ## 📁 Project Structure
 ```text
 x-algorithm-skills/
+├── AGENTS.md
 ├── .claude-plugin/
 │   └── marketplace.json
-└── plugins/
-    └── x-algorithm/
-        ├── .claude-plugin/
-        │   └── plugin.json
-        └── skills/
-            ├── x-post-optimizer/
-            │   ├── SKILL.md
-            │   └── references/
-            ├── x-architecture/
-            │   ├── SKILL.md
-            │   └── references/
-            ├── x-ranking-engine/
-            │   ├── SKILL.md
-            │   └── references/
-            ├── x-dev-engineering/
-            │   ├── SKILL.md
-            │   └── references/
-            ├── x-data-signals/
-            │   ├── SKILL.md
-            │   └── references/
-            └── x-safety-filtering/
-                ├── SKILL.md
-                └── references/
+├── plugins/
+│   └── x-algorithm/
+│       ├── .claude-plugin/
+│       │   └── plugin.json
+│       └── skills/
+│           ├── x-post-optimizer/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-architecture/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-ranking-engine/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-dev-engineering/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-data-signals/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           └── x-safety-filtering/
+│               ├── SKILL.md
+│               └── references/
+├── README.md
+├── LICENSE-MIT
+└── LICENSE-APACHE
+
 ```
 ---
 
