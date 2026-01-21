@@ -1,16 +1,10 @@
 # Reference: Communication & Thrift Guidelines
 
-X uses **Apache Thrift** as its Interface Definition Language (IDL) to ensure type safety across different languages (Rust, Scala, Java, Python).
-
-### Key Thrift Files
-* `request.thrift`: Defines the `MixerRequest` parameters.
-* `ranking.thrift`: Defines the features passed to the Heavy Ranker.
-* `visibility.thrift`: Defines the safety labels and filtering results.
+X uses **Apache Thrift** as its Interface Definition Language (IDL) to maintain a strict contract between Scala orchestration and Rust execution.
 
 ### Best Practices
-1.  **Backward Compatibility:** Never change a field ID in a Thrift file. Always add new fields as `optional` to avoid breaking existing services.
-2.  **Naming:** Use CamelCase for types and snake_case for fields.
-3.  **Efficiency:** Avoid sending large blobs of text through Thrift. Pass IDs where possible and let the receiving service hydrate the data locally from a cache or database.
-
-### Compilation
-Changes to `.thrift` files require re-running the build (e.g., `bazel build` or `cargo build`) to regenerate the language-specific bindings.
+1.  **Strict ID Management:** Never change an existing field ID. New engagement signals for the Phoenix model must be added as new optional IDs to maintain backward compatibility.
+2.  **Thin Objects:** Sourcing and retrieval layers should pass only IDs and minimal features through Thrift. Full hydration (text/media) should happen as late as possible in the pipeline.
+3.  **Schema Definitions:**
+    * `request.thrift`: Defines the `MixerRequest` including user context.
+    * `ranking.thrift`: Contains the multi-action engagement labels (Like, Repost, etc.) predicted by the transformer.
