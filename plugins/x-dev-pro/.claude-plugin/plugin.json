@@ -1,0 +1,7 @@
+{
+  "name": "x-dev-pro",
+  "version": "1.0.0",
+  "description": "Deep knowledge of ProductMixer, Rust scoring, and Scala infra.",
+  "author": { "name": "x-algorithm-skills" },
+  "skills": ["./skills/x-dev-pro/"]
+}
