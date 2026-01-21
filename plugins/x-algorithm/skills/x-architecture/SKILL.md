@@ -1,7 +1,7 @@
 ---
 name: x-architecture
 description: Use this skill when reasoning about the distributed system design, service orchestration, or request lifecycle of the X recommendation engine. It is essential for tasks involving the "For You" timeline construction, HomeMixer logic, or ProductMixer component definitions.
-version: 1.1.0
+version: 1.0.0
 license: MIT
 ---
 
