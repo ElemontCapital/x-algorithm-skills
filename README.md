@@ -5,40 +5,6 @@ A suite of high-performance agent skills derived from a thorough analysis of the
 **Upstream reference:** - https://github.com/xai-org/x-algorithm
 
 ---
-## 📁 Project Structure
-```text
-x-algorithm-skills/
-├── AGENTS.md
-├── .claude-plugin/
-│   └── marketplace.json
-├── plugins/
-│   └── x-algorithm/
-│       ├── .claude-plugin/
-│       │   └── plugin.json
-│       └── skills/
-│           ├── x-post-optimizer/
-│           │   ├── SKILL.md
-│           │   └── references/
-│           ├── x-architecture/
-│           │   ├── SKILL.md
-│           │   └── references/
-│           ├── x-ranking-engine/
-│           │   ├── SKILL.md
-│           │   └── references/
-│           ├── x-dev-engineering/
-│           │   ├── SKILL.md
-│           │   └── references/
-│           ├── x-data-signals/
-│           │   ├── SKILL.md
-│           │   └── references/
-│           └── x-safety-filtering/
-│               ├── SKILL.md
-│               └── references/
-├── README.md
-├── LICENSE-MIT
-└── LICENSE-APACHE
-```
----
 
 ## 🚀 Installation
 
@@ -177,6 +143,41 @@ Compliance and health logic in `visibility-lib`.
 - Identifies triggers for `DoNotAmplify` or `SearchBlacklist` labels
 - Explains the "Linear Decay" applied to reported content.
 
+---
+
+## 📁 Project Structure
+```text
+x-algorithm-skills/
+├── AGENTS.md
+├── .claude-plugin/
+│   └── marketplace.json
+├── plugins/
+│   └── x-algorithm/
+│       ├── .claude-plugin/
+│       │   └── plugin.json
+│       └── skills/
+│           ├── x-post-optimizer/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-architecture/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-ranking-engine/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-dev-engineering/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           ├── x-data-signals/
+│           │   ├── SKILL.md
+│           │   └── references/
+│           └── x-safety-filtering/
+│               ├── SKILL.md
+│               └── references/
+├── README.md
+├── LICENSE-MIT
+└── LICENSE-APACHE
+```
 ---
 
 ## 📜 License & Attribution
