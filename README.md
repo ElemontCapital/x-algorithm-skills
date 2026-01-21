@@ -47,7 +47,7 @@ x-algorithm-skills/
 Add the marketplace:
 
 ```bash
-/plugin marketplace add xai-org/x-algorithm-skills
+/plugin marketplace add ElemontCapital/x-algorithm-skills
 ```
 Install the skills:
 ```bash
@@ -56,7 +56,7 @@ Install the skills:
 ### Any Agent
 For other agents, you can extract and add the skills manually:
 ```bash
-bunx add-skill xai-org/x-algorithm-skills
+bunx add-skill ElemontCapital/x-algorithm-skills
 ```
 This will install the skills individually, so you will need to manually upgrade them when updates are available.
 See **AGENTS.md** for manual installation instructions.
