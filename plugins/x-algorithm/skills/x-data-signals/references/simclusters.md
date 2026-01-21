@@ -1,14 +1,21 @@
-# Reference: SimClusters & Communities
+# Reference: SimClusters (Community Embeddings)
 
-SimClusters is a collaborative filtering framework used to move beyond simple "Topic" tags and into "Community" interest groups.
+SimClusters (specifically **SimClusters v2**) is a general-purpose representation layer based on Matrix Factorization. It groups Users and Tweets into sparsely populated communities.
 
+### The Algorithm: Metropolis-Hastings
+The source code uses a Metropolis-Hastings sampling algorithm to generate these communities on a massive scale (tens of millions of users, ~145k clusters).
 
+### Key Vectors
+SimClusters generates two primary vectors for every entity:
+* **Known-For (Producer):** What is this user an expert in? (e.g., Elon Musk is "Known-For" Space, EV, Tech).
+* **Interested-In (Consumer):** What does this user want to see? (Derived from who they follow and what they like).
 
-### How it Works
-1.  **Matrix Factorization:** The system analyzes the User-to-User follow graph.
-2.  **Cluster Identification:** It identifies ~145,000 distinct clusters (e.g., "NY Tech," "K-Pop Fans," "Rust Developers").
-3.  **User Membership:** Each user is assigned a "Score" for various clusters based on who they follow and interact with.
-4.  **Tweet Anchoring:** If multiple members of "Cluster A" interact with a tweet, that tweet is "anchored" to Cluster A.
+### The "Fave" Signal
+While early versions relied on Follows, modern SimClusters relies heavily on **Favorites (Likes)**.
+* **Logic:** If you Like a tweet anchored to the "Rust Lang" cluster, your "Interested-In" vector for "Rust Lang" increases.
+* **Log-Odds Scoring:** The association score is often calculated using Log-Odds to normalize against global popularity (preventing "Viral" tweets from polluting niche clusters).
 
-### Significance in Ranking
-In the **Heavy Ranker**, a feature known as `sim_cluster_score` is computed by calculating the dot product between the User's cluster vector and the Tweet's anchor vector. A high match is one of the strongest predictors of a "Like" or "Retweet."
+### Usage in Ranking
+In the **Heavy Ranker**, the model computes the **Dot Product** between:
+$$Score = \vec{User}_{InterestedIn} \cdot \vec{Tweet}_{Representation}$$
+A high dot product indicates the tweet falls exactly into the niche the user cares about, often overriding a lower generic popularity score.
