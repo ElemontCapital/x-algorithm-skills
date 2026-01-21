@@ -8,8 +8,6 @@ A suite of high-performance agent skills derived from a thorough analysis of the
 ## 📁 Project Structure
 ```text
 x-algorithm-skills/
-├── README.md
-├── AGENTS.md
 ├── .claude-plugin/
 │   └── marketplace.json
 └── plugins/
@@ -17,12 +15,24 @@ x-algorithm-skills/
         ├── .claude-plugin/
         │   └── plugin.json
         └── skills/
-            ├── x-post-optimizer.md    # Content strategy & reach
-            ├── x-architecture.md      # System design & HomeMixer
-            ├── x-ranking-engine.md    # HeavyRanker & ML models
-            ├── x-dev-engineering.md   # Rust/Scala/Thrift implementation
-            ├── x-data-signals.md      # SimClusters & Reputation
-            └── x-safety-filtering.md  # VisibilityLib & Shadowbans
+            ├── x-post-optimizer/
+            │   ├── SKILL.md
+            │   └── references/
+            ├── x-architecture/
+            │   ├── SKILL.md
+            │   └── references/
+            ├── x-ranking-engine/
+            │   ├── SKILL.md
+            │   └── references/
+            ├── x-dev-engineering/
+            │   ├── SKILL.md
+            │   └── references/
+            ├── x-data-signals/
+            │   ├── SKILL.md
+            │   └── references/
+            └── x-safety-filtering/
+                ├── SKILL.md
+                └── references/
 ```
 ---
 
