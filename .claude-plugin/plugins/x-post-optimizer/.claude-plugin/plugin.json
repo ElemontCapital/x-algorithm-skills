@@ -1,8 +1,0 @@
-{
-  "name": "x-post-optimizer",
-  "version": "1.0.0",
-  "description": "Maximizes post reach by balancing engagement weights against safety filters.",
-  "author": { "name": "Elemont" },
-  "skills": ["./skills/x-post-optimizer/"],
-  "keywords": ["X", "Algorithm", "Twitter", "Growth", "Optimization"]
-}
