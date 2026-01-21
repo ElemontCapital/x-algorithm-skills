@@ -1,10 +1,29 @@
 # X Algorithm Skills 𝕩
 
-A suite of high-performance agent skills derived from the open-source **xAI X Algorithm**. These skills empower an agent to understand, optimize for, and build upon the X recommendation engine.
+A suite of high-performance agent skills derived from a thorough analysis of the open-source **xAI X Algorithm**. These skills empower an agent to understand, optimize for, and build upon the X recommendation engine.
 
-**Upstream reference:**  
-- https://github.com/xai-org/x-algorithm
+**Upstream reference:** - https://github.com/xai-org/x-algorithm
 
+---
+## 📁 Project Structure
+```text
+x-algorithm-skills/
+├── README.md
+├── AGENTS.md
+├── .claude-plugin/
+│   └── marketplace.json
+└── plugins/
+    └── x-algorithm/
+        ├── .claude-plugin/
+        │   └── plugin.json
+        └── skills/
+            ├── x-post-optimizer.md    # Content strategy & reach
+            ├── x-architecture.md      # System design & HomeMixer
+            ├── x-ranking-engine.md    # HeavyRanker & ML models
+            ├── x-dev-engineering.md   # Rust/Scala/Thrift implementation
+            ├── x-data-signals.md      # SimClusters & Reputation
+            └── x-safety-filtering.md  # VisibilityLib & Shadowbans
+```
 ---
 
 ## 🚀 Installation
@@ -18,10 +37,7 @@ Add the marketplace:
 ```
 Install the skills:
 ```bash
-/plugin install x-post-optimizer
-/plugin install x-algo-blueprint
-/plugin install x-dev-pro
-/plugin install x-data-signals
+/plugin install x-algorithm
 ```
 ### Any Agent
 For other agents, you can extract and add the skills manually:
@@ -35,10 +51,12 @@ See **AGENTS.md** for manual installation instructions.
 
 | Skill  | Best For | Description |
 |--------|--------|-------------|
-| **x-post-optimizer** | Content Creators | Writes content optimized for "Heavy Ranker" weights while passing safety and visibility filters. |
-| **x-algo-blueprint** | Researchers | Maps the full pipeline: **Candidate Sources → Scoring → Filtering → Mixing**. |
-| **x-dev-pro** | Software Engineers | Coding assistant for the Rust/Scala product-mixer and Thrift definitions. |
-| **x-data-signals** | Data Scientists | Deep dive into SimClusters, User Reputation (TweepCred), and Graph Analytics. |
+| **x-post-optimizer** | Content Creators | Maximizes reach by optimizing for **HeavyRanker** weights. |
+| **x-architecture** | Architects | Maps the **HomeMixer** pipeline and candidate generation. |
+| **x-ranking-engine** | ML Engineers | Deep dive into **HeavyRanker (MaskNet)** and scoring logic. |
+| **x-dev-engineering** | Software Engineers | Coding assistant for Rust/Scala and Thrift definitions. |
+| **x-data-signals** | Data Scientists | Logic for **SimClusters**, **TweepCred**, and Graph Analytics. |
+| **x-safety-filtering** | Trust & Safety | Managing **VisibilityLib**, safety labels, and shadowbans. |
 
 ---
 
@@ -61,10 +79,10 @@ Contains the weighting parameters from `ScoringService` and filtering logic from
 
 ---
 
-### 2) `x-algo-blueprint`
+### 2) `x-architecture`
 
 **Context**  
-Contains the system architecture diagrams and data flow for `HomeMixer`.
+Orchestration logic within the `HomeMixer` and `ProductMixer` frameworks.
 
 **Typical Triggers**  
 - How does the feed work?  
@@ -78,46 +96,72 @@ Contains the system architecture diagrams and data flow for `HomeMixer`.
 
 ---
 
-### 3) `x-dev-pro`
+### 3) `x-ranking-engine`
 
 **Context**  
-Contains patterns for Rust/Scala interop, Thrift schemas, and the product-mixer framework.
+ML model implementation in the `heavy-ranker` module.
 
 **Typical Triggers**  
-- Refactor this pipeline.  
-- Create a new Candidate Source.  
-- Fix this Rust error.
+- How is scoring calculated?
+- Explain the Transformer model.  
+- What is MaskNet?
 
 **What it does**  
-- Assists with extending the product-mixer architecture.  
-- Generates and reviews Thrift and service boundaries.  
-- Helps debug cross-language pipeline issues.
+- Provides technical details on the neural network architecture.
+- Explains candidate isolation.
+- Breaks down multi-task probability scoring.
 
 ---
 
-### 4) `x-data-signals`
+### 4) `x-dev-engineering`
 
 **Context**  
-Contains logic for SimClusters (Communities), RealGraph (User Interactions), and TweepCred (Reputation).
+Contains patterns for Rust/Scala interop, Thrift schemas, and the `product-mixer` framework.
+
+**Typical Triggers**  
+- Refactor this mixer pipeline.
+- Create a new Candidate Source.  
+- "Generate a Thrift schema.
+
+**What it does**  
+- Assists with navigating the `ProductMixer` architecture.  
+- Generates and reviews Thrift and service boundaries.  
+- Helps debug cross-language pipeline issues.
+- Assists in writing high-performance async Rust.
+
+---
+
+### 5) `x-data-signals`
+
+**Context**  
+Contains logic for `SimClusters` (Communities), `RealGraph` (User Interactions), and `TweepCred` (Reputation).
 
 **Typical Triggers**  
 - Explain user clustering.  
-- How is reputation calculated?  
+- How is reputation calculated?
+- What is TweepCred? 
 - Analyze graph embeddings.
 
 **What it does**  
 - Explains how users and content are embedded into clusters.  
 - Breaks down interaction graphs and authority signals.  
-- Helps interpret ranking and trust features from a data perspective.
+- Explains how `PageRank-style reputation scores influence content priority.
 
 ---
 
-## 🎯 Who This Is For
+### 6) `x-safety-filtering`
 
-- Creators who want to optimize reach and visibility on X.
-- Researchers who want a clear, inspectable model of a large-scale recommender.
-- Engineers who want to extend or reason about a production-grade ranking pipeline.
-- Data scientists who want to understand how graphs, clusters, and reputation signals interact.
+**Context**  
+Compliance and health logic in `visibility-lib`.
+
+**Typical Triggers**  
+- Am I shadowbanned?
+- Check for toxicity filters.
+- What are safety labels?
+
+**What it does**  
+- Identifies triggers for `DoNotAmplify` or `SearchBlacklist` labels
+- Explains the "Linear Decay" applied to reported content.
 
 ---
 
