@@ -1,8 +1,13 @@
 {
   "name": "x-algorithm",
   "version": "1.0.0",
-  "description": "Unified skills for the X recommendation engine.",
-  "author": { "name": "Elemont" },
-  "skills": ["./skills/"],
-  "keywords": ["X", "Algorithm", "Rust", "Growth", "ML"]
+  "description": "Comprehensive X Algorithm knowledge base.",
+  "skills": [
+    "./skills/x-post-optimizer/",
+    "./skills/x-architecture/",
+    "./skills/x-ranking-engine/",
+    "./skills/x-dev-engineering/",
+    "./skills/x-data-signals/",
+    "./skills/x-safety-filtering/"
+  ]
 }
