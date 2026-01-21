@@ -1,47 +1,41 @@
 ---
 name: x-ranking-engine
-description: Expert knowledge of the X Heavy Ranker (MaskNet/Transformer), multi-task engagement prediction, and the mathematical scoring formulas used to rank the For You timeline.
+description: Use this skill when you need to reason about the machine learning models that determine the final order of the "For You" timeline. It is essential for tasks involving model feature engineering, tuning engagement weights, or understanding the internal mechanics of the Heavy Ranker (Navi).
 version: 1.0.0
 license: MIT
 ---
 
 # X Ranking Engine
 
-Use this skill when you need to understand or modify the machine learning logic that determines which tweets appear at the top of a user's feed. This skill covers model architecture, feature engineering, and the weights assigned to different user interactions.
+Deep technical knowledge of the X Heavy Ranker, including MaskNet/Phoenix architectures, Multi-Task Learning (MTL) heads, probability calibration, and the mathematical WeightedScorer logic.
 
 ## Context
 
-The **Heavy Ranker** is the "brain" of X. While the architecture (HomeMixer) fetches candidates, the Ranking Engine scores them. It utilizes a Multi-Task Learning (MTL) approach to predict the probability of various user actions simultaneously. The model has transitioned from legacy Gradient Boosted Decision Trees (GBDT) to deep neural networks (MaskNet) and Grok-influenced Transformers.
+The **Heavy Ranker** is the final scoring stage of the pipeline. It reduces a pool of ~1,500 candidates to a sorted list based on predicted user engagement. The system has evolved from Gradient Boosted Decision Trees (GBDT) to deep neural networks like **MaskNet** and more recently, transformer-based architectures (Phoenix) that leverage learned embeddings rather than hand-engineered features.
 
-For deep technical specifications, refer to:
+For detailed technical specifications, see:
 - [Model Architecture](./references/model-architecture.md)
-- [Scoring Parameters](./references/scoring-parameters.md)
+- [Scoring Parameters & Weights](./references/scoring-parameters.md)
 
 ## What it does
 
-* **Explains Multi-Task Learning:** Details how the model predicts multiple binary outcomes (Like, Reply, RT) in a single pass.
-* **Analyzes Feature Importance:** Identifies the impact of User-Tweet interaction features vs. static Author features (e.g., TweepCred).
-* **Calculates Ranking Scores:** Provides the mathematical logic for how individual probability predictions are combined into a final rank.
-* **Rationalizes Candidate Isolation:** Explains the design constraint where tweets are scored independently of each other to ensure high-throughput serving via the Navi engine.
+* **Details Multi-Task Learning (MTL):** Explains how the model simultaneously predicts multiple engagement types (Like, Reply, Retweet, Video View, etc.) using a shared backbone.
+* **Decodes Feature Hydration:** Maps how `HomeMixer` gathers User (SimClusters, TwHIN) and Tweet (Content, Engagement counts) features to pass to the `Navi` service.
+* **Analyzes Calibration:** Explains the process of transforming raw model outputs into "calibrated" probabilities that reflect real-world interaction rates.
+* **Explains Point-wise Ranking:** Details why the algorithm scores candidates in isolation (Candidate Isolation) to allow for massive horizontal scaling.
 
 ## Guidelines
 
-* **The Scoring Equation:** The final score $S$ for a tweet is generally a weighted sum of predicted probabilities $P$:
-  $$S = \sum_{i=1}^{n} w_i \cdot P_i$$
-  where $w_i$ represents the weight of action $i$ (e.g., Like, Reply, Retweet).
-* **Feature Categories:**
-    * **User Features:** Logged-in user's interests, embedding ID, and recent engagement history.
-    * **Tweet Features:** Content embeddings, media type, and age (recency).
-    * **Author Features:** Reputation (TweepCred) and "Social Proof" (current engagement velocity).
-* **Navi Serving:** Models are served via **Navi**. When adding a new feature to the model, it must be hydrated in the `HomeMixer` and passed through the Thrift interface to the ranker.
-* **Positive vs. Negative Signals:** Ensure you account for negative weights. Signals like "Show less often" or "Block/Mute" have massive negative multipliers that can instantly tank a candidate's score.
-* **Recency Bias:** The algorithm applies a time-decay function. A high-scoring old tweet will eventually be outranked by a lower-scoring fresh tweet to maintain timeline "newness."
-* **Action-Specific Weights**: Videos eligible for vqv boosts in P(video_view); no equivalent for other media.
+* **Architecture Isolation:** When modifying the ranker, remember that the model cannot "see" other tweets in the same batch. Diversity and deduplication must happen in the `Selector` or `Mixer` stages, not the `Scorer`.
+* **Weighting vs. Probability:** The model predicts *probabilities* (e.g., "What is the 0-1 chance this user likes this tweet?"). The `WeightedScorer` then applies *weights* to these probabilities to get the final score.
+* **Negative Signals are Nuclear:** Signals like "Report" or "Show Less Often" have weights (e.g., -369.0) that are orders of magnitude larger than positive signals, ensuring toxic content is effectively removed from the candidate pool.
+* **Recency Decay:** The engine applies a time-decay function ($e^{-\lambda t}$) to the final score to ensure the timeline remains fresh and doesn't get stuck on high-scoring old content.
+* **Navi Interop:** The Heavy Ranker is hosted in the **Navi** (Rust) service. Features must be serialized into Thrift objects in Scala and sent via RPC.
 
 ## Example Trigger Prompts
 
-* "How does the Heavy Ranker calculate the final score for a tweet?"
-* "Explain the MaskNet architecture used in the Phoenix model."
-* "What are the specific weights for a Like vs. a Retweet in the current scoring service?"
-* "How does the algorithm handle negative feedback signals?"
-* "Where in the code are the model features defined for the Navi engine?"
+* "How does the MaskNet architecture handle high-order feature interactions?"
+* "Explain the mathematical relationship between $P(Like)$ and the final ranking score."
+* "What is the impact of adding a new 'Long-form Read' head to the MTL model?"
+* "How does the algorithm calibrate probabilities for new, low-data tweets?"
+* "Where in the Thrift definition are the Heavy Ranker features specified?"
