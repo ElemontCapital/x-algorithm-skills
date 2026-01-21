@@ -38,6 +38,7 @@ For detailed breakdowns of the execution flow and service roles, see:
 * **Candidate Isolation:** During scoring, candidates are treated as independent units. They can attend to user context (the "Query") but cannot attend to other candidates in the same batch, allowing for massive parallelization.
 * **Rust/Scala Interop:** High-level orchestration (routing and mixing) happens in Scala. Low-level, CPU-intensive tasks (Scoring and Filtering) are implemented in Rust for maximum throughput.
 * **Thrift Contracts:** All inter-service communication (e.g., between HomeMixer and the Heavy Ranker) is governed by Thrift IDL files. Changes to data structures must be reflected in these schemas.
+* **Scorers Integration**: Includes content-type weights (e.g., video boosts) and author-based deboosts (frequency, subscription status) in Weighted Scorer.
 
 ## Example Trigger Prompts
 
