@@ -27,6 +27,8 @@ bunx add-skill ElemontCapital/x-algorithm-skills
 This will install the skills individually, so you will need to manually upgrade them when updates are available.
 See **AGENTS.md** for manual installation instructions.
 
+---
+
 ## ⚡ The Skill Suite
 
 | Skill  | Best For | Description |
