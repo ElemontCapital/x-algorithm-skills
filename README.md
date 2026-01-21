@@ -1,4 +1,4 @@
-# X Algorithm Skills 𝕩
+# 𝕩 Algorithm Skills
 
 A suite of high-performance agent skills derived from a thorough analysis of the open-source **xAI X Algorithm**. These skills empower an agent to understand, optimize for, and build upon the X recommendation engine.
 
