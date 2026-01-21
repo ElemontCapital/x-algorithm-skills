@@ -1,6 +1,7 @@
 {
   "name": "x-algorithm",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "Comprehensive X Algorithm knowledge base, from Rust engineering to viral content strategy.",
   "skills": [
     "./skills/x-post-optimizer",
