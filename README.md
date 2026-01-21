@@ -37,7 +37,6 @@ x-algorithm-skills/
 ├── README.md
 ├── LICENSE-MIT
 └── LICENSE-APACHE
-
 ```
 ---
 
