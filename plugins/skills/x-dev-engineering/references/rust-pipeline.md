@@ -21,3 +21,6 @@ impl Filter<MyQuery, MyCandidate> for VisibilityFilter {
     }
 }
 ```
+### Key Performance Rules
+1. Hydrators must be parallelized to hide I/O latency.
+2. Scorers must never change the list size; they only mutate the score field of the candidate.
