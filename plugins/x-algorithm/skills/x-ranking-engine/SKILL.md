@@ -34,7 +34,8 @@ For detailed technical specifications, see:
 
 ## Example Trigger Prompts
 
-* "How does the MaskNet architecture handle high-order feature interactions?"
+* "/audit-ml: Show the current mathematical weights for Like vs. Retweet."
+* "/audit-ml: Explain how MaskNet handles this specific feature."
 * "Explain the mathematical relationship between $P(Like)$ and the final ranking score."
 * "What is the impact of adding a new 'Long-form Read' head to the MTL model?"
 * "How does the algorithm calibrate probabilities for new, low-data tweets?"
