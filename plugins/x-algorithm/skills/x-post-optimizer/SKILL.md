@@ -1,7 +1,7 @@
 ---
 name: x-post-optimizer
-description:Use this skill when advising on post structure, timing, media selection, and account health to align with the HeavyRanker's scoring weights and anti-spam heuristics.
-version: 1.1.0
+description: Use this skill when advising on post structure, timing, media selection, and account health to align with the HeavyRanker's scoring weights and anti-spam heuristics.
+version: 1.0.0
 license: MIT
 ---
 
