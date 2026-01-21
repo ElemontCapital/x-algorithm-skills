@@ -33,6 +33,15 @@ For specific tactical data, refer to:
 * **Native Media Preference:** Always prefer native video (MP4) or images over external links or text-only posts. Native video receives a **~3.4x** reach boost compared to text.
 * **Engagement Bait Awareness:** The algorithm's NLP models detect phrases like "Retweet this," "Follow for more," or "Link in bio." These can trigger the `EngagementBait` safety label, which caps distribution.
 * **Clustering Strategy:** Reach is easier to obtain within your "SimCluster" (interest group). Straying too far into unrelated topics can lead to lower initial engagement, which the algorithm interprets as low relevance.
+* **Content-Type Handling**: Videos receive special weighting via vqv_weight_eligibility (e.g., boosted P(video_view)). Other types (images, text-only, threads, polls, links) are treated uniformly, with no built-in bonuses or penalties—potential gap for future differentiation (e.g., clickbait penalties for links).
+* **Frequency Deboost**: Posts from the same author within ~1 hour incur a halving penalty on the second (and subsequent) post's score, to prevent spam-like flooding.
+- **Subscription Boosts**: X Premium+ users get implicit visibility advantages, likely via adjusted author authority or reduced deboost thresholds.
+* vqv_eligibility: Bool (true for videos to enable view weight boost).
+* frequency_penalty: Float (0.5 for posts <1 hour apart).
+* premium_boost: Float (1.2-1.5 multiplier for Premium+ authors).
+* Rapid posting: Score *= 0.5 if delta_time < 3600s.
+* Non-video content: No special treatment; images/text equal to base post.
+* Premium+ edge: Overrides minor deboosts for high-authority users.
 
 ## Example Trigger Prompts
 
@@ -41,3 +50,7 @@ For specific tactical data, refer to:
 * "Analyze this draft for potential link penalties or anti-spam triggers."
 * "What is the best time to post based on engagement velocity logic?"
 * "How can I improve my account's reputation score (TweepCred)?"
+* Input: "Optimize video post: 'Cute puppy clip'"
+  Output: High score boost from vqv_weight_eligibility (P(video_view)+20%). Wait 1+ hour after last post to avoid halving.
+* Input: "Why did my second post flop?"
+  Output: Likely halved due to <1 hour spacing; suggest Premium+ for mitigation.
