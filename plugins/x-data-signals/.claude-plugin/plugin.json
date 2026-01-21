@@ -1,7 +1,0 @@
-{
-  "name": "x-data-signals",
-  "version": "1.0.0",
-  "description": "Expertise in SimClusters, TweepCred, and Graph data.",
-  "author": { "name": "x-algorithm-skills" },
-  "skills": ["./skills/x-data-signals/"]
-}
