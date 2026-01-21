@@ -32,21 +32,6 @@ This performs a local copy of the skill files. You will need to re-run the comma
 
 ---
 
-## ⌨️ Commands
-
-| Command | Purpose | Example Usage | Skill |
-| :--- | :--- | :--- | :--- |
-| **`/post-check`** | Optimize reach | "Run `/post-check` on this draft." | **x-post-optimizer** |
-| **`/trace-feed`** | Explain architecture | "Execute `/trace-feed` for the For You timeline." | **x-architecture** |
-| **`/audit-ml`** | Review ranking logic | "`/audit-ml` show the current Like vs. RT weights." | **x-ranking-engine** |
-| **`/gen-thrift`** | Generate boilerplate | "`/gen-thrift` for a new engagement signal." | **x-dev-engineering** |
-| **`/explain-graph`** | Retrieve and rank | "`/explain-graph`: Calculate the TweepCred for this account." | **x-data-signals** |
-| **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." | **x-safety-filtering** |
-| **`/find-candidates`** | Candidate search | "`/find-candidates`: How does the system retrieve candidates?" | **x-retrieval-systems** |
-| **`/run-experiment`** | Algorithm tuning | "`/run-experiment`: Explain the salt-based hashing used in DuckDuckGoose." | **x-experimental-ops** |
-
----
-
 ## ⚡ Skills
 
 | Skill  | Best For | Description |
@@ -59,6 +44,21 @@ This performs a local copy of the skill files. You will need to re-run the comma
 | **x-safety-filtering** | Policy & Safety | Use when investigating visibility drops, applying "Do Not Amplify" labels, or configuring the VisibilityLib rule engine for legal compliance. |
 | **x-retrieval-systems** | Search Engineers | Use when optimizing top-of-funnel sourcing, managing Earlybird search indices, or tuning ANN vector searches to improve candidate diversity. |
 | **x-experimental-ops** | Product Managers | Use when launching A/B tests via DuckDuckGoose, defining "North Star" metrics, or managing feature flags for specific user cohorts. |
+
+---
+
+## ⌨️ Commands
+
+| Command | Purpose | Example Usage | Skill |
+| :--- | :--- | :--- | :--- |
+| **`/post-check`** | Optimize reach | "Run `/post-check` on this draft." | **x-post-optimizer** |
+| **`/trace-feed`** | Explain architecture | "Execute `/trace-feed` for the For You timeline." | **x-architecture** |
+| **`/audit-ml`** | Review ranking logic | "`/audit-ml` show the current Like vs. RT weights." | **x-ranking-engine** |
+| **`/gen-thrift`** | Generate boilerplate | "`/gen-thrift` for a new engagement signal." | **x-dev-engineering** |
+| **`/explain-graph`** | Retrieve and rank | "`/explain-graph`: Calculate the TweepCred for this account." | **x-data-signals** |
+| **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." | **x-safety-filtering** |
+| **`/find-candidates`** | Candidate search | "`/find-candidates`: How does the system retrieve candidates?" | **x-retrieval-systems** |
+| **`/run-experiment`** | Algorithm tuning | "`/run-experiment`: Explain the salt-based hashing used in DuckDuckGoose." | **x-experimental-ops** |
 
 ---
 
