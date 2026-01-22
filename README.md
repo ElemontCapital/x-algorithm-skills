@@ -19,8 +19,10 @@ Install the skills:
 ```bash
 /plugin install x-algorithm
 ```
-### Any Other Agent (Cursor, Windsurf, Roo Code, etc.)
+### Other Agents
+
 You can use the universal installer to pull specific skills into your project context:
+
 ```bash
 bunx add-skill ElemontCapital/x-algorithm-skills
 ```
