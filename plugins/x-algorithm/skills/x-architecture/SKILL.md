@@ -43,8 +43,9 @@ For detailed technical breakdowns, see:
 
 ## Example Trigger Prompts
 
-* "Trace the flow of a request through HomeMixer to the Heavy Ranker."
-* "What is the difference between a `CandidateSource` and a `Gate` in ProductMixer?"
-* "Where are the SimClusters embeddings injected during the pipeline?"
-* "Explain how `cr-mixer` handles Out-of-Network candidate generation."
-* "How does the system enforce visibility filtering using `visibility-lib`?"
+* "/trace-feed ForYou"
+* "/trace-feed HomeMixer → HeavyRanker"
+* "/trace-feed CandidateSource vs Gate in ProductMixer"
+* "Where are SimClusters embeddings injected in the pipeline?"
+* "Explain cr-mixer’s Out-of-Network candidate generation"
+* "How does visibility-lib enforce feed filtering?"
