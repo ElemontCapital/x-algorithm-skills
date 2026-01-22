@@ -34,10 +34,10 @@ For specific tactical data, refer to:
 
 ## Example Trigger Prompts
 
-* "/post-check: Optimize this draft: [Insert Post Text]"
-* "/post-check: Why is my reach low on this specific post?"
-* "Review this draft: should I include the link in the main post or the first reply?"
-* "Why is my second post today performing 50% worse than the first?"
-* "Explain why video content has a different reach profile than text-only posts."
-* "How do I maximize the 'Conversation' weight for a 5-tweet thread?"
-* "What is the mathematical impact of a 'Show Less Often' click on my account?"
+* "/post-check optimize draft: [Insert Post Text]"
+* "/post-check why is reach low for this post?"
+* "Should I put the link in the main post or first reply?"
+* "Why is my second post 50% weaker than the first?"
+* "Explain reach differences: video vs text-only"
+* "Maximize 'Conversation' weight for 5-tweet thread"
+* "Impact of 'Show Less Often' clicks on my account"
