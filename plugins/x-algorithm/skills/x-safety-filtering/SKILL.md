@@ -30,5 +30,10 @@ The filtering stage is the "Gatekeeper" of the timeline. Even if a tweet has a h
 * **Linear Decay:** Negative reputation signals follow a linear decay model; an account can "heal" its reputation over time by stopping negative behavior.
 
 ## Example Trigger Prompts
-* "/safety-check: Am I shadowbanned or under a SearchBlacklist?"
-* "/safety-check: Explain the toxicity decay for this account."
+
+* "/safety-check shadowban or SearchBlacklist status"
+* "/safety-check toxicity decay for @user"
+* "/safety-check flagged content vs safe content ratio"
+* "/safety-check audit applied filters on a thread"
+* "what are the visibility rules affecting recent posts"
+* "show suppressed accounts in a community"
