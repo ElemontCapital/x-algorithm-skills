@@ -34,9 +34,9 @@ For technical deep-dives, see:
 
 ## Example Trigger Prompts
 
-* "/gen-thrift: Create a new Thrift definition for a ranking signal."
-* "/gen-thrift: Help me scaffold a new Rust Filter trait."
-* "How do I add a new engagement signal to the Phoenix multi-action prediction?"
-* "Show the Rust implementation for a Thunder candidate source."
-* "Explain the 'No Hand-Engineered Features' design in the latest ranking update."
-* "How is candidate isolation enforced in the transformer's attention mask?"
+* "/gen-thrift new ranking signal"
+* "/gen-thrift scaffold Rust Filter trait"
+* "Add a new engagement signal to Phoenix prediction"
+* "Show Rust implementation for Thunder candidate source"
+* "Explain 'No Hand-Engineered Features' in ranking update"
+* "How is candidate isolation applied in transformer attention?"
