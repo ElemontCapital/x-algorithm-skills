@@ -36,14 +36,14 @@ This performs a local copy of the skill files. You will need to re-run the comma
 
 | Skill  | Best For | Description |
 |--------|--------|-------------|
-| **x-post-optimizer** | Content Creators | Use when drafting posts or threads to ensure maximum distribution by hitting high-weight signals like Author Replies and Dwell Time |
-| **x-architecture** | Architects | Use when mapping request flows through HomeMixer or designing the orchestration and lifecycle of new candidate sources. |
-| **x-ranking-engine** | ML Engineers | Use when tuning MaskNet models, adding new engagement heads, or auditing how probability calibration affects the final weighted score. |
-| **x-dev-engineering** | Software Engineers | Use when writing production code, implementing modular Rust traits, or updating Thrift IDL files for cross-service communication. |
-| **x-data-signals** | Data Scientists | Use when exploring SimCluster community mappings, calculating account authority (TweepCred), or analyzing RealGraph relationship weights. |
-| **x-safety-filtering** | Policy & Safety | Use when investigating visibility drops, applying "Do Not Amplify" labels, or configuring the VisibilityLib rule engine for legal compliance. |
-| **x-retrieval-systems** | Search Engineers | Use when optimizing top-of-funnel sourcing, managing Earlybird search indices, or tuning ANN vector searches to improve candidate diversity. |
-| **x-experimental-ops** | Product Managers | Use when launching A/B tests via DuckDuckGoose, defining "North Star" metrics, or managing feature flags for specific user cohorts. |
+| **x-post-optimizer** | Content Creators | Optimize posts to hit high-weight signals like Author Replies and Dwell Time—get the algorithm to see you. |
+| **x-architecture** | Architects | Map feed flows and candidate sources—design content that naturally aligns with the system. |
+| **x-ranking-engine** | ML Engineers | Tune MaskNet and engagement heads—understand why content rises or disappears. |
+| **x-dev-engineering** | Software Engineers | Build code that interacts with the ranking system—control cross-service logic behind posts. |
+| **x-data-signals** | Data Scientists | Decode hidden account signals, map communities, and predict algorithm behavior. |
+| **x-safety-filtering** | Policy & Safety | Audit VisibilityLib rules—stop silent suppression and keep content visible. |
+| **x-retrieval-systems** | Search Engineers | Optimize sourcing, vector searches, and candidate diversity for maximum reach. |
+| **x-experimental-ops** | Product Managers | Run A/B tests, track metrics, and manipulate flags—treat the feed like a lab. |
 
 ---
 
@@ -51,14 +51,14 @@ This performs a local copy of the skill files. You will need to re-run the comma
 
 | Command | Purpose | Example Usage | Skill |
 | :--- | :--- | :--- | :--- |
-| **`/post-check`** | Optimize reach | "Run `/post-check` on this draft." | **x-post-optimizer** |
-| **`/trace-feed`** | Explain architecture | "Execute `/trace-feed` for the For You timeline." | **x-architecture** |
-| **`/audit-ml`** | Review ranking logic | "`/audit-ml` show the current Like vs. RT weights." | **x-ranking-engine** |
-| **`/gen-thrift`** | Generate boilerplate | "`/gen-thrift` for a new engagement signal." | **x-dev-engineering** |
-| **`/explain-graph`** | Retrieve and rank | "`/explain-graph`: Calculate the TweepCred for this account." | **x-data-signals** |
-| **`/safety-check`** | Checks for shadowbans | "`/safety-check` on @username for SearchBlacklist." | **x-safety-filtering** |
-| **`/find-candidates`** | Candidate search | "`/find-candidates`: How does the system retrieve candidates?" | **x-retrieval-systems** |
-| **`/run-experiment`** | Algorithm tuning | "`/run-experiment`: Explain the salt-based hashing used in DuckDuckGoose." | **x-experimental-ops** |
+| **/post-check** | Boost visibility | "/post-check draft" | **x-post-optimizer** |
+| **/trace-feed** | Map content flow | "/trace-feed ForYou" | **x-architecture** |
+| **/audit-ml** | Inspect ranking levers | "/audit-ml Likes vs RT" | **x-ranking-engine** |
+| **/gen-thrift** | Build system scaffolding | "/gen-thrift new signal" | **x-dev-engineering** |
+| **/explain-graph** | Decode account influence | "/explain-graph @user" | **x-data-signals** |
+| **/safety-check** | Ensure content visibility | "/safety-check @user" | **x-safety-filtering** |
+| **/find-candidates** | Surface potential posts | "/find-candidates topic" | **x-retrieval-systems** |
+| **/run-experiment** | Test algorithm tweaks | "/run-experiment feed-test" | **x-experimental-ops** |
 
 ---
 
