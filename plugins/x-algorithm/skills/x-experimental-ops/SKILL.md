@@ -27,7 +27,10 @@ The algorithm is never "finished." It is a living system managed by **DuckDuckGo
   * Explains the "Kill Switch" architecture that allows engineers to instantly roll back a new algorithmic feature if it causes a spike in latency or negative feedback without requiring a full code redeployment.
 
 ## Example Trigger Prompts
-* "/run-experiment: Explain the salt-based hashing used for user bucketing."
-* "/run-experiment: How is 'Unregretted User Minutes' weighted compared to raw dwell time?"
-* Trace the feature flag logic for the latest Grok-based retrieval test."
-* What are the holdout group parameters for the current Heavy Ranker A/B test?"
+
+* "/run-experiment salt-based hashing for user buckets"
+* "/run-experiment Unregretted User Minutes vs dwell time"
+* "Trace feature flag logic for latest Grok retrieval test"
+* "Show holdout group parameters for current Heavy Ranker A/B"
+* "Compare control vs variant metrics for feed engagement test"
+* "Explain how a new signal is staged in an experiment pipeline"
