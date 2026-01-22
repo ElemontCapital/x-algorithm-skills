@@ -34,9 +34,9 @@ For detailed technical specifications, see:
 
 ## Example Trigger Prompts
 
-* "/audit-ml: Show the current mathematical weights for Like vs. Retweet."
-* "/audit-ml: Explain how MaskNet handles this specific feature."
-* "Explain the mathematical relationship between $P(Like)$ and the final ranking score."
-* "What is the impact of adding a new 'Long-form Read' head to the MTL model?"
-* "How does the algorithm calibrate probabilities for new, low-data tweets?"
-* "Where in the Thrift definition are the Heavy Ranker features specified?"
+* "/audit-ml show weights: Like vs Retweet"
+* "/audit-ml explain MaskNet handling for this feature"
+* "Relationship between P(Like) and final ranking score"
+* "Impact of adding 'Long-form Read' head to MTL model"
+* "How are probabilities calibrated for new low-data tweets?"
+* "Where are Heavy Ranker features defined in Thrift?"
