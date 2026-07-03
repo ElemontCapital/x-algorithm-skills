@@ -34,6 +34,18 @@ This performs a local copy of the skill files. You will need to re-run the comma
 
 ---
 
+## Validation
+
+Run the local packaging gate before publishing or editing skills:
+
+```bash
+python scripts/validate-skills.py
+```
+
+It checks plugin skill paths, exact `SKILL.md` casing, required frontmatter, and local reference links.
+
+---
+
 ## ⚡ Skills
 
 | Skill  | Best For | Description |
