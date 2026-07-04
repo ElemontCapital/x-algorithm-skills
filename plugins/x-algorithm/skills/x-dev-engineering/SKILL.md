@@ -15,8 +15,8 @@ The modern X algorithm prioritizes a "No Hand-Engineered Features" philosophy. R
 
 For technical deep-dives, see:
 - [The Rust Candidate Pipeline](./references/rust-pipeline.md)
-- [Phoenix (Grok) Model Scoring](./references/phoenix-scoring.md)
-- [Visibility & Safety Engineering](./references/visibility-safety.md)
+- [Phoenix Ranking Model](./references/phoenix-ranking-model.md)
+- [Visibility Filtering](./references/visibility-filtering.md)
 
 ## What it does
 
