@@ -42,7 +42,7 @@ Run the local packaging gate before publishing or editing skills:
 python scripts/validate-skills.py
 ```
 
-It checks plugin skill paths, exact `SKILL.md` casing, required frontmatter, and local reference links.
+It checks plugin skill paths, exact `SKILL.md` casing, required frontmatter, and tracked, on-disk, skill-local reference links.
 
 ---
 

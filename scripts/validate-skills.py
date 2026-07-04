@@ -13,7 +13,8 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[1]
 FRONTMATTER_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
 FIELD_RE = re.compile(r"^([A-Za-z0-9_-]+):\s*(.*)$")
-LOCAL_LINK_RE = re.compile(r"\[[^\]]+\]\((\.{1,2}/[^)#]+)(?:#[^)]+)?\)")
+MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
+SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 
 
 def repo_path(path: Path) -> str:
@@ -33,6 +34,33 @@ def normalize_repo_link(source_file: str, target: str) -> str:
             continue
         parts.append(part)
     return "/".join(parts)
+
+
+def markdown_local_link(raw_target: str) -> str | None:
+    target = raw_target.strip()
+    if not target:
+        return None
+
+    if target.startswith("<") and ">" in target:
+        target = target[1 : target.index(">")]
+    else:
+        target = target.split()[0]
+
+    target = target.strip()
+    if not target or target.startswith(("#", "/", "//")) or SCHEME_RE.match(target):
+        return None
+
+    target = target.split("#", 1)[0]
+    return target or None
+
+
+def local_links(markdown: str) -> list[str]:
+    links: list[str] = []
+    for raw_target in MARKDOWN_LINK_RE.findall(markdown):
+        target = markdown_local_link(raw_target)
+        if target:
+            links.append(target)
+    return links
 
 
 def git_tracked_paths() -> set[str]:
@@ -124,6 +152,10 @@ def main() -> int:
                 errors.append(f"{plugin_rel}: lowercase skill file is not portable: {lowercase_skill}")
 
             skill_file = ROOT / skill_file_rel
+            if not skill_file.exists():
+                errors.append(f"{plugin_rel}: tracked skill file is missing on disk: {skill_file_rel}")
+                continue
+
             markdown = skill_file.read_text(encoding="utf-8")
             fields = parse_frontmatter(markdown)
             for required in ("name", "description"):
@@ -136,10 +168,36 @@ def main() -> int:
                     f"{skill_file_rel}: frontmatter name {fields['name']!r} does not match directory {expected_name!r}"
                 )
 
-            for target in LOCAL_LINK_RE.findall(markdown):
-                target_rel = normalize_repo_link(skill_file_rel, target)
-                if target_rel not in tracked:
-                    errors.append(f"{skill_file_rel}: local link target is missing: {target}")
+            markdown_file_rels = sorted(
+                path
+                for path in tracked
+                if path == skill_file_rel or (path.startswith(f"{skill_dir_rel}/") and path.endswith(".md"))
+            )
+            for markdown_rel in markdown_file_rels:
+                markdown_file = ROOT / markdown_rel
+                if not markdown_file.exists():
+                    errors.append(f"{markdown_rel}: tracked markdown file is missing on disk")
+                    continue
+                markdown_text = markdown_file.read_text(encoding="utf-8")
+                for target in local_links(markdown_text):
+                    target_rel = normalize_repo_link(markdown_rel, target)
+                    target_path = (ROOT / target_rel).resolve()
+                    try:
+                        target_path.relative_to(ROOT)
+                    except ValueError:
+                        errors.append(f"{markdown_rel}: local link target escapes repository: {target}")
+                        continue
+
+                    if not target_rel.startswith(f"{skill_dir_rel}/"):
+                        errors.append(f"{markdown_rel}: local link target leaves skill package: {target}")
+                        continue
+
+                    if target_rel not in tracked:
+                        errors.append(f"{markdown_rel}: local link target is not tracked: {target}")
+                        continue
+
+                    if not target_path.exists():
+                        errors.append(f"{markdown_rel}: local link target is missing on disk: {target}")
 
     if errors:
         print("Skill packaging validation failed:")
