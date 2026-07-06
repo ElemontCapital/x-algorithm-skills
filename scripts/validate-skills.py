@@ -36,6 +36,24 @@ def normalize_repo_link(source_file: str, target: str) -> str:
     return "/".join(parts)
 
 
+def normalize_repo_root_path(target: str) -> str | None:
+    target = target.strip().replace("\\", "/")
+    if not target or target.startswith(("/", "//")) or SCHEME_RE.match(target):
+        return None
+
+    parts: list[str] = []
+    for part in PurePosixPath(target).parts:
+        if part in ("", "."):
+            continue
+        if part == "..":
+            if not parts:
+                return None
+            parts.pop()
+            continue
+        parts.append(part)
+    return "/".join(parts) or None
+
+
 def markdown_local_link(raw_target: str) -> str | None:
     target = raw_target.strip()
     if not target:
@@ -77,6 +95,23 @@ def git_tracked_paths() -> set[str]:
     return {path for path in result.stdout.split("\0") if path}
 
 
+def read_json_object(path: Path, errors: list[str]) -> dict[str, object] | None:
+    path_rel = repo_path(path)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"{path_rel}: invalid JSON at line {exc.lineno}, column {exc.colno}: {exc.msg}")
+        return None
+    except OSError as exc:
+        errors.append(f"{path_rel}: cannot read JSON: {exc}")
+        return None
+
+    if not isinstance(data, dict):
+        errors.append(f"{path_rel}: expected a JSON object")
+        return None
+    return data
+
+
 def parse_frontmatter(markdown: str) -> dict[str, str]:
     match = FRONTMATTER_RE.match(markdown)
     if not match:
@@ -113,6 +148,72 @@ def parse_frontmatter(markdown: str) -> dict[str, str]:
     return fields
 
 
+def validate_marketplace_manifest(
+    tracked: set[str], plugin_files: list[Path], errors: list[str]
+) -> None:
+    marketplace_rel = ".claude-plugin/marketplace.json"
+    marketplace_file = ROOT / marketplace_rel
+
+    if marketplace_rel not in tracked:
+        errors.append(f"Missing tracked marketplace manifest {marketplace_rel}")
+        return
+    if not marketplace_file.exists():
+        errors.append(f"{marketplace_rel}: tracked marketplace manifest is missing on disk")
+        return
+
+    marketplace = read_json_object(marketplace_file, errors)
+    if marketplace is None:
+        return
+
+    plugins = marketplace.get("plugins")
+    if not isinstance(plugins, list) or not plugins:
+        errors.append(f"{marketplace_rel}: expected a non-empty plugins array")
+        return
+
+    listed_plugin_files: set[str] = set()
+    for index, entry in enumerate(plugins):
+        entry_rel = f"{marketplace_rel}: plugins[{index}]"
+        if not isinstance(entry, dict):
+            errors.append(f"{entry_rel}: expected an object")
+            continue
+
+        name = entry.get("name")
+        if not isinstance(name, str) or not name.strip():
+            errors.append(f"{entry_rel}: expected a non-empty name")
+            name = None
+
+        source = entry.get("source")
+        if not isinstance(source, str) or not source.strip():
+            errors.append(f"{entry_rel}: expected a non-empty source")
+            continue
+
+        source_rel = normalize_repo_root_path(source)
+        if source_rel is None:
+            errors.append(f"{entry_rel}: source must be a repository-local path: {source}")
+            continue
+
+        plugin_file_rel = f"{source_rel}/.claude-plugin/plugin.json"
+        plugin_file = ROOT / plugin_file_rel
+        if plugin_file_rel not in tracked:
+            errors.append(f"{entry_rel}: source does not contain a tracked plugin manifest: {source}")
+            continue
+        if not plugin_file.exists():
+            errors.append(f"{entry_rel}: source plugin manifest is missing on disk: {source}")
+            continue
+
+        listed_plugin_files.add(plugin_file_rel)
+        plugin_manifest = read_json_object(plugin_file, errors)
+        if plugin_manifest is not None and name is not None and plugin_manifest.get("name") != name:
+            errors.append(
+                f"{entry_rel}: name {name!r} does not match {plugin_file_rel} name "
+                f"{plugin_manifest.get('name')!r}"
+            )
+
+    for plugin_file in sorted(repo_path(path) for path in plugin_files):
+        if plugin_file not in listed_plugin_files:
+            errors.append(f"{plugin_file}: plugin manifest is not listed in {marketplace_rel}")
+
+
 def main() -> int:
     errors: list[str] = []
     tracked = git_tracked_paths()
@@ -121,10 +222,15 @@ def main() -> int:
     if not plugin_files:
         errors.append("No plugin manifests found under plugins/*/.claude-plugin/plugin.json")
 
+    validate_marketplace_manifest(tracked, plugin_files, errors)
+
     for plugin_file in plugin_files:
         plugin_rel = repo_path(plugin_file)
         plugin_root = plugin_file.parents[1]
-        manifest = json.loads(plugin_file.read_text(encoding="utf-8"))
+        manifest = read_json_object(plugin_file, errors)
+        if manifest is None:
+            continue
+
         skills = manifest.get("skills")
         if not isinstance(skills, list) or not skills:
             errors.append(f"{plugin_rel}: expected a non-empty skills array")
